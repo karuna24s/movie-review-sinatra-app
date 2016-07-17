@@ -22,8 +22,30 @@ class CriticController < ApplicationController
         @critic.save
         session[:critic_id] = @critic.id #logged in. where is the sessions hash initially declared?
         redirect to '/reviews'
+      end
     end
-  end
+
+    # LOG IN
+    get '/login' do #renders the log in page
+      if is_logged_in?
+        flash[:message] = "You were already logged in."
+        redirect '/reviews'
+      else
+        erb :'critic/login'
+      end
+    end
+
+    post '/login' do
+      @critic = Critic.find_by(username: params[:username]) # find the critic
+      if @critic && @critic.authenticate(params[:password]) # checks if the password matches
+        session[:critic_id] = @critic_id # log them in
+        redirect "/reviews" 
+      else
+        flash[:message] = "Your username or password were not correct. Please try again."
+        redirect "/login"
+      end
+    end
+
 
 
 
