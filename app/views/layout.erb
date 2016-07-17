@@ -1,0 +1,10 @@
+<html>
+  <body>
+    <h1> Movie Reviews </h1>
+    <br>
+    <% if flash[:message] %>
+      <b><i><p class="message"><%= flash[:message] %></p></i></b>
+    <% end %>
+  <%= yield %>
+  </body>
+</html>

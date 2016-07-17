@@ -11,4 +11,17 @@ class ApplicationController < Sinatra::Base
     set :session_secret, 'movies_are_awesome'
     register Sinatra::Flash
   end
+
+  # Homepage
+  get '/' do
+    erb :index
+  end
+
+  def is_logged_in?
+    !!session[:critic_id]
+  end
+
+  def current_user
+    @critic = Critic.find(session[:critic_id])
+  end
 end
