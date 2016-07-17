@@ -39,14 +39,23 @@ class CriticController < ApplicationController
       @critic = Critic.find_by(username: params[:username]) # find the critic
       if @critic && @critic.authenticate(params[:password]) # checks if the password matches
         session[:critic_id] = @critic_id # log them in
-        redirect "/reviews" 
+        redirect "/reviews"
       else
         flash[:message] = "Your username or password were not correct. Please try again."
         redirect "/login"
       end
     end
 
-
+    # Log out
+    get '/logout' do
+      if is_logged_in?
+        session.clear
+        flash[:notice] = "You have been logged out of your account."
+        redirect '/login'
+      else
+        redirect '/'
+      end
+  end
 
 
 
