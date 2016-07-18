@@ -45,11 +45,11 @@ class ReviewController < ApplicationController
       if @review.critic_id == session[:critic_id]
         erb :'reviews/show'
       else
-        flash[:message] = "That's not your pattern. Sorry you can't see it."
+        flash[:message] = "That's not your review. Sorry you can't see it."
         redirect to '/reviews'
       end
     else
-      flash[:notice] = "Looks like you weren't logged in yet. Please log in below."
+      flash[:message] = "Looks like you weren't logged in yet. Please log in below."
       redirect to '/login'
     end
   end

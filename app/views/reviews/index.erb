@@ -3,8 +3,8 @@
 
 <% @reviews.each_with_index do |review, index| %>
   <div>
-    <p>#<%= index+1 %>. <a href="/reviews/<%=review.id%>"><%= review.review_title %></a></p>
-    <p>Genre: <%= review.review_genre %></p>
+    <p>#<%= index+1 %>. <a href="/reviews/<%=review.id%>"><%= review.title %></a></p>
+    <p>Genre: <%= review.genre %></p>
     <br>
   </div>
 <% end %>
