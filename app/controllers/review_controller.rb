@@ -65,6 +65,25 @@ class ReviewController < ApplicationController
     end
   end
 
+  patch '/reviews/:id' do
+    if params[:title] == "" || params[:genre] == "" || params[:content] == "" || params[:rating] == ""
+      flash[:message] = "Oops! Reviews must have a title, genre, content and rating. Please try again."
+      redirect to "/reviews/#{params[:id]}/edit"
+    else
+      @review = Review.find_by_id(params[:id])
+      @review.title = params[:title]
+      @review.genre = params[:genre]
+      @review.content = params[:content]
+      @review.rating = params[:rating]
+      @review.critic_id = critic.id
+      @review.save
+      flash[:messsage] = "Your review has been updated!"
+      redirect to "/reviews/#{@review.id}"
+    end
+  end
+
+  # Delete
+
 
 
 
