@@ -4,6 +4,11 @@
 <p>Description: <%= @review.content %></p>
 <p>Rating: <%= @review.rating %></p>
 
+<form action="/reviews/<%=@review.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete This Review">
+</form>
+
 <p><a href='/reviews/<%=@review.id%>/edit'>Edit this Movie Review</a></p>
 <p><a href='/reviews'>See all of the reviews</a></p>
 <p><a href='/logout'>Log Out</a></p>
