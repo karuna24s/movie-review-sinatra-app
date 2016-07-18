@@ -11,16 +11,16 @@ class ReviewController < ApplicationController
   end
 
   post '/reviews' do
-    if params[:review_title] == "" || params[:review_genre] == "" || params[:review_content] == "" || params[:review_rating] == "" # must have title, genre, content, & rating
+    if params[:title] == "" || params[:genre] == "" || params[:content] == "" || params[:rating] == "" # must have title, genre, content, & rating
       flash[:message] = "Oops! Reviews must have a title, genre, content and rating. Please try again."
       redirect to '/reviews/new'
     else
       critic = current_critic
       @review = Review.create(
-        :review_title => params[:review_title],
-        :review_genre => params[:review_genre],
-        :review_content => params[:review_content],
-        :review_rating => params[:review_rating],
+        :title => params[:title],
+        :genre => params[:genre],
+        :content => params[:content],
+        :rating => params[:rating],
         :critic_id => critic.id)
       redirect to "/reviews/#{@review.id}"
     end
