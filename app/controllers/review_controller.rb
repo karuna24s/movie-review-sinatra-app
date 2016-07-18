@@ -10,6 +10,23 @@ class ReviewController < ApplicationController
     end
   end
 
+  post '/reviews' do
+    if params[:review_title] == "" || params[:review_genre] == "" || params[:review_content] == "" || params[:review_rating] == "" # must have title, genre, content, & rating
+      flash[:message] = "Oops! Reviews must have a title, genre, content and rating. Please try again."
+      redirect to '/reviews/new'
+    else
+      critic = current_critic
+      @review = Review.create(
+        :review_title => params[:review_title],
+        :review_genre => params[:review_genre],
+        :review_content => params[:review_content],
+        :review_rating => params[:review_rating],
+        :critic_id => critic.id)
+      redirect to "/reviews/#{@review.id}"
+    end
+  end
+
+
   # Read
   get '/reviews' do
     if is_logged_in?
@@ -17,9 +34,27 @@ class ReviewController < ApplicationController
       @reviews = @critic.reviews.all
       erb :'reviews/index'
     else
+      flash[:message] = "Looks like you weren't logged in yet. Please log in below."
+      redirect to '/login'
+    end
+  end
+
+  get '/reviews/:id' do
+    if is_logged_in?
+      @review = Review.find_by_id(params[:id])
+      if @review.critic_id == session[:critic_id]
+        erb :'reviews/show'
+      else
+        flash[:message] = "That's not your pattern. Sorry you can't see it."
+        redirect to '/reviews'
+      end
+    else
       flash[:notice] = "Looks like you weren't logged in yet. Please log in below."
       redirect to '/login'
     end
   end
+
+
+
 
 end
