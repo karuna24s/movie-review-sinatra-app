@@ -75,7 +75,7 @@ class ReviewController < ApplicationController
       @review.genre = params[:genre]
       @review.content = params[:content]
       @review.rating = params[:rating]
-      @review.critic_id = critic.id
+      @review.critic_id = current_critic.id
       @review.save
       flash[:messsage] = "Your review has been updated!"
       redirect to "/reviews/#{@review.id}"
@@ -83,6 +83,7 @@ class ReviewController < ApplicationController
   end
 
   # Delete
+
 
 
 

@@ -5,7 +5,7 @@
 <p>Description: <%= @review.content %></p>
 <p>Rating: <%= @review.rating %></p>
 
-<form action="/reviews" method="POST">
+<form action="/reviews/<%=@review.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
     <p><b>Name of Movie:</b> <input type='text' name="title"></p>
     <p>
