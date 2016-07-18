@@ -1,0 +1,47 @@
+<h2>Edit this review</h2>
+<h2> <%= @review.title %></h2>
+
+<p>Genre: <%= @review.genre %></p>
+<p>Description: <%= @review.content %></p>
+<p>Rating: <%= @review.rating %></p>
+
+<form action="/reviews" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+    <p><b>Name of Movie:</b> <input type='text' name="title"></p>
+    <p>
+      <b>Genre:</b>
+      <select name="genre">
+        <option value="Action">Action</option>
+        <option value="Bollywood">Bollywood</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Documentary">Documentary</option>
+        <option value="Drama">Drama</option>
+        <option value="Independent">Independent</option>
+        <option value="International">International</option>
+        <option value="Musical">Musical</option>
+        <option value="Romance">Romance</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Western">Western</option>
+      </select>
+    </p>
+    <p>
+      <b>Description:</b><br>
+      <textarea rows="4" cols="50" name="content"></textarea>
+    </p>
+    <p>
+      Rating:
+      <select name="rating" value="N/A">
+        <option value="N/A">N/A</option>
+        <option value="1">1 star</option>
+        <option value="2">2 stars</option>
+        <option value="3">3 stars</option>
+        <option value="4">4 stars</option>
+        <option value="5">5 stars</option>
+      </select>
+    </p>
+    <p><input type='submit' value='Save this review'></p>
+</form>
+
+<p><a href='/logout'>Log Out</a></p>
+<p><a href='/reviews'>Cancel</a></p>

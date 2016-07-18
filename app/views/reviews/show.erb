@@ -3,3 +3,7 @@
 <p>Genre: <%= @review.genre %></p>
 <p>Description: <%= @review.content %></p>
 <p>Rating: <%= @review.rating %></p>
+
+<p><a href='/reviews/<%=@review.id%>/edit'>Edit this Movie Review</a></p>
+<p><a href='/reviews'>See all of the reviews</a></p>
+<p><a href='/logout'>Log Out</a></p>
