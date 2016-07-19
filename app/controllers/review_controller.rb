@@ -42,10 +42,14 @@ class ReviewController < ApplicationController
   get '/reviews/:id' do
     if is_logged_in?
       @review = Review.find_by_id(params[:id])
-      erb :'reviews/show'
+      if @review.critic_id == session[:critic_id]
+        erb :'reviews/show'
+      elsif @review.critic_id != session[:critic_id]
+        redirect '/reviews'
+      end
     else
       flash[:message] = "Looks like you weren't logged in yet. Please log in below."
-      redirect to '/login'
+      redirect to '/reviews'
     end
   end
 
