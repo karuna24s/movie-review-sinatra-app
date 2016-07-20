@@ -1,22 +1,24 @@
 <h2> Hi <%= @critic.username %>!</h2>
-<h3>Here are all of the Movie Reviews:</h3>
-
-
+<br>
+<h3>Here Are All Of Your Movie Reviews:</h3>
+<br>
 <% @reviews.each do |review| %>
   <div>
-    <p><a href="/reviews/<%=review.id%>"><%= review.title %></a></p>
+    <p>Name of Movie: <a href="/reviews/<%=review.id%>"><%= review.title %></a></p>
     <p>Genre: <%= review.genre %></p>
     <p>Description: <%= review.content %></p>
     <p>Rating: <%= review.rating %></p>
-    <br>
   </div>
 <% end %>
 
 <a href="/reviews/new"> Add another Movie Review to your list </a><br>
 <a href="/logout"> Log Out </a>
+<br>
+<br>
+<br>
 
-<h3>Other Users' Reviews</h3>
-
+<h3>Movies Reviews Written By Other Critics:</h3>
+<br>
 <% Review.all.each do |review| %>
   <div>
     <!-- <%if review.title != nil && review.critic_id != @critic.id%> -->
