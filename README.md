@@ -16,7 +16,7 @@ Sinatra CRUD app for Movie Reviews
 
 ### Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/karuna24s/movie-review-sinatra-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/karuna24s/movie-review-sinatra-app. This project is intended to be a safe and welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 ### License
 
