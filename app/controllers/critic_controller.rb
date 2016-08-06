@@ -18,7 +18,6 @@ class CriticController < ApplicationController
         flash[:message] = "In order to sign up for account, you must have both a username & a password. Please try again."
         redirect to '/signup'
       else
-        #binding.pry
         @critic = Critic.create(username: params[:username], password: params[:password])
         @critic.save
         session[:critic_id] = @critic.id #logged in. where is the sessions hash initially declared?
@@ -38,7 +37,6 @@ class CriticController < ApplicationController
 
     post "/login" do
       @critic = Critic.find_by(username: params[:username]) #find the user
-      #binding.pry
       if @critic && @critic.authenticate(params[:password]) #check password matches
         session[:critic_id] = @critic.id   #log them in
         redirect "/reviews" #show them their reviews

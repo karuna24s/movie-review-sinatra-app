@@ -14,7 +14,6 @@ class ApplicationController < Sinatra::Base
 
   # Homepage
   get '/' do
-    #binding.pry
     erb :index
   end
 
