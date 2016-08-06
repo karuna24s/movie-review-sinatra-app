@@ -7,7 +7,7 @@
 
 <form action="/reviews/<%=@review.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
-    <p><b>Name of Movie:</b> <input type='text' name="title"></p>
+    <p><b>Name of Movie:</b> <input type='text' name="title" value='<%= @review.title %>'></p>
     <p>
       <b>Genre:</b>
       <select name="genre">
@@ -28,7 +28,7 @@
     </p>
     <p>
       <b>Description:</b><br>
-      <textarea rows="4" cols="50" name="content"></textarea>
+      <textarea rows="4" cols="50" name="content"><%=@review.content%></textarea>
     </p>
     <p>
       Rating:

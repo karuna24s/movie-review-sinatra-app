@@ -16,7 +16,7 @@ class ReviewController < ApplicationController
       redirect to '/reviews/new'
     else
       critic = current_critic
-      @review = Review.create(
+      critic.Review.create(
         :title => params[:title],
         :genre => params[:genre],
         :content => params[:content],
