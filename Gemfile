@@ -11,8 +11,12 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash'
-gem 'pg'
 
-group :development do
+
+group :development, :test do
   gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg', '0.18.4'
 end
