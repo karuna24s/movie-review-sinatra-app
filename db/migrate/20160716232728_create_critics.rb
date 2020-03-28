@@ -1,4 +1,4 @@
-class CreateCritics < ActiveRecord::Migration
+class CreateCritics < ActiveRecord::BASE
   def change
     create_table :critics do |t|
       t.string :username
