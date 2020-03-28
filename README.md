@@ -11,7 +11,7 @@ Sinatra CRUD app for Movie Reviews
 
 ### Usage
 
-1. Run `rake db:mirgrate`.
+1. Run `rake db:migrate`.
 2. Run `shotgun`. Then you can go to your browser and view the application.
 
 ### Contributing
